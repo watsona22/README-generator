@@ -21,7 +21,7 @@ THEN this is added to the section of the README entitled Questions, with instruc
 WHEN I click on the links in the Table of Contents
 THEN I am taken to the corresponding section of the README
 
-Most criteria were met and the program (for the most part) functions as expected. 
+All criteria were met and the program functions as expected. 
 
 I know how to utilize the node environment to create a program using dynamic Javascript. There were helpful error messages in the terminal to direct porgress. The inquirer documentation was relatively easy to unpack but I did have a few questions that I posed to my tutor. Initially the prompt was not contained in an async function which made it impossible to generate a file and complete successfully. Most of the components were there but through trial and error, I was able to organize the code blocks so that they ran as expected. This recurring issue of needing to organize code so that it can be read and debugged is vitally important. Previous eureka moments were just as valuable here - reformatting code, implementing clear naming convention, and notating often.  I am still working to make this a natural part of the build process. 
 
