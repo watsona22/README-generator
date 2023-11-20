@@ -81,7 +81,6 @@ async function generateREADME() {
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
-- [Badges](#badges)
 - [Contribution](#contribution)
 - [Tests](#tests)
 - [Questions](#questions)` : ""
@@ -103,7 +102,7 @@ ${data.usage}
 ${data.credit}
 ## License
 This project was licensed under the ${data.stack} license. 
-## How to Contribute
+## Contribution
 ${data.contribute}
 ## Tests
 [Here is where to go for details about tests](https://github.com/${data.github})
