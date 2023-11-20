@@ -63,13 +63,13 @@ async function generateREADME() {
             },
             {
                 type: 'input',
-                name: 'test',
+                name: 'github',
                 message: 'If you wish to provide developers with test for the application, include examples here ?',
             },
             {
                 type: 'input',
-                name: 'questions',
-                message: 'If you have questions that might be useful for the developer, include them here.',
+                name: 'email',
+                message: 'If you have questions that might be useful, please email me here.',
             },
         ]);
 
@@ -106,9 +106,9 @@ This project was licensed under the ${data.stack} license.
 ## How to Contribute
 ${data.contribute}
 ## Tests
-${data.description}
+[Here is where to go for details about tests](https://github.com/${data.github})
 ## Questions
-${data.description}`
+[Here is where you can reach me for questions](mailto:${data.email})`
         //once the file is created, there is a success statement otherwise the error is printed out in the catch statement 
         fs.writeFile(filename, content, (err) =>
             err ? console.log(err) : console.log('Success!')
@@ -119,5 +119,5 @@ ${data.description}`
 }
 //the generateREADME function is called here.
 generateREADME();
-
+//for information about formatting the email and link text, I referendced the following source: www.w3schools.io/file/markdown-links/
 
