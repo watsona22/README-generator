@@ -1,7 +1,20 @@
+//allows us to import the inquirer package to use
 const inquirer = require('inquirer');
+//allows us to utilize the file system inside the node environment
 const fs = require('fs');
+//declare a function with values to include in the license function
+function license(response) {
+    if (response === "None") {
+        return '';
+    } else if (response === 'MIT') {
+        return '([![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+    } else if (response === 'Creative Commons Zero v1.0 Universal') {
+        return '[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)'
+    } else
+        return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
 
-
+}
+//async function that creates a promise that will eventually contain all the answers to each prompt
 async function generateREADME() {
     try {
         const data = await inquirer.prompt([
@@ -41,13 +54,7 @@ async function generateREADME() {
                 type: 'list',
                 message: 'Under what license can this project be shared?',
                 name: 'stack',
-                choices: ['None', 'MIT', 'Apache License 2.0', 'Creative Commons Zero v1.0 Universal'],
-            },
-            {
-                type: 'list',
-                message: 'What badges would you like to share?',
-                name: 'badge',
-                choices: ['None', 'MIT', 'Creative Commons Zero v1.0 Universal'],
+                choices: ['None', 'MIT', 'Creative Commons Zero v1.0 Universal', 'Apache License 2.0'],
             },
             {
                 type: 'input',
@@ -65,36 +72,39 @@ async function generateREADME() {
                 message: 'If you have questions that might be useful for the developer, include them here.',
             },
         ]);
+
+        const licenseInfo = license(data.stack);
+        //this writes the values to an .md file & later displays values in the prescribed README format below
         const filename = `${data.name.toLowerCase().split(' ').join('')}.md`;
         const content = `# ${filename}
-         
-            ## Description
-            ${data.description}
-            ## Table of Contents
-            ${data.toc}
-            ###- [Installation](#installation)
-            ###- [Usage](#usage)
-            ###- [Credits](#credits)
-            ###- [License](#license)
-            ###- [Badges](#badges)
-            ###- [Contribution](#contribution)
-            ###- [Tests](#tests)
-            ###- [Questions](#questions)
-            ## Installation
-            ${data.install}
-            ## Usage
-            ${data.usage}
-            ## Credits
-            ${data.credit}
-            ## License
-            ${licenseInfo}
-            ## How to Contribute
-            ${data.contribute}
-            ## Tests
-            ${data.description}
-            ## Questions
-            ${data.description}`
 
+## Description
+            ${data.description}
+## Table of Contents
+            ${data.toc}
+            - [Installation](#installation)
+            - [Usage](#usage)
+            - [Credits](#credits)
+            - [License](#license)
+            - [Badges](#badges)
+            - [Contribution](#contribution)
+            - [Tests](#tests)
+            - [Questions](#questions)
+## Installation
+            ${data.install}
+## Usage
+            ${data.usage}
+## Credits
+            ${data.credit}
+## License
+            ${licenseInfo}
+## How to Contribute
+            ${data.contribute}
+## Tests
+            ${data.description}
+## Questions
+            ${data.description}`
+        //once the file is created, there is a success statement otherwise the error is printed out in the catch statement 
         fs.writeFile(filename, content, (err) =>
             err ? console.log(err) : console.log('Success!')
         );
@@ -102,17 +112,7 @@ async function generateREADME() {
         console.log(err)
     }
 }
+//the generateREADME function is called here.
 generateREADME();
-function license() {
-    const licenseInfo = license(data.stack);
-    if (response === None) {
-        return '';
-    } else if (response === 'MIT') {
-        return '([![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-    } else if (response === 'Creative Commons Zero v1.0 Universal') {
-        return '[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)'
-    } else
-        return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
 
-}
 
