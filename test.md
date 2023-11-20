@@ -1,28 +1,28 @@
 # test.md
+([![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-            test
+test
 ## Table of Contents
-            true
-            - [Installation](#installation)
-            - [Usage](#usage)
-            - [Credits](#credits)
-            - [License](#license)
-            - [Badges](#badges)
-            - [Contribution](#contribution)
-            - [Tests](#tests)
-            - [Questions](#questions)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Badges](#badges)
+- [Contribution](#contribution)
+- [Tests](#tests)
+- [Questions](#questions)
 ## Installation
-            test
+test
 ## Usage
-            test
+test
 ## Credits
-            test
+test
 ## License
-            
+This project was licenced under the MIT license. 
 ## How to Contribute
-            test
+test
 ## Tests
-            test
+test
 ## Questions
-            test
+test

@@ -7,7 +7,7 @@ function license(response) {
     if (response === "None") {
         return '';
     } else if (response === 'MIT') {
-        return '([![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+        return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
     } else if (response === 'Creative Commons Zero v1.0 Universal') {
         return '[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)'
     } else
@@ -74,36 +74,37 @@ async function generateREADME() {
         ]);
 
         const licenseInfo = license(data.stack);
+        const toc = data.toc ? `- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Badges](#badges)
+- [Contribution](#contribution)
+- [Tests](#tests)
+- [Questions](#questions)` : ""
         //this writes the values to an .md file & later displays values in the prescribed README format below
         const filename = `${data.name.toLowerCase().split(' ').join('')}.md`;
         const content = `# ${filename}
+${licenseInfo}
 
 ## Description
-            ${data.description}
+${data.description}
 ## Table of Contents
-            ${data.toc}
-            - [Installation](#installation)
-            - [Usage](#usage)
-            - [Credits](#credits)
-            - [License](#license)
-            - [Badges](#badges)
-            - [Contribution](#contribution)
-            - [Tests](#tests)
-            - [Questions](#questions)
+${toc}
 ## Installation
-            ${data.install}
+${data.install}
 ## Usage
-            ${data.usage}
+${data.usage}
 ## Credits
-            ${data.credit}
+${data.credit}
 ## License
-            ${licenseInfo}
+This project was licenced under the ${data.stack} license. 
 ## How to Contribute
-            ${data.contribute}
+${data.contribute}
 ## Tests
-            ${data.description}
+${data.description}
 ## Questions
-            ${data.description}`
+${data.description}`
         //once the file is created, there is a success statement otherwise the error is printed out in the catch statement 
         fs.writeFile(filename, content, (err) =>
             err ? console.log(err) : console.log('Success!')
