@@ -74,7 +74,10 @@ async function generateREADME() {
         ]);
 
         const licenseInfo = license(data.stack);
-        const toc = data.toc ? `- [Installation](#installation)
+        //on the advice of my tutor, we moved the table of contents to this ternary statement so that it would appear in the readme if the user preferred not to have one. Then called the results in the section where the TOC would be. 
+        const toc = data.toc ? `
+## Table of Contents
+- [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
@@ -84,12 +87,13 @@ async function generateREADME() {
 - [Questions](#questions)` : ""
         //this writes the values to an .md file & later displays values in the prescribed README format below
         const filename = `${data.name.toLowerCase().split(' ').join('')}.md`;
+        //we also moved the property "calls" so that they were flush with the headings.
+        //Erik also suggested that we include a phrase that would display the text of the license chosen under the license heading (line 105).
         const content = `# ${filename}
 ${licenseInfo}
 
 ## Description
 ${data.description}
-## Table of Contents
 ${toc}
 ## Installation
 ${data.install}
@@ -98,7 +102,7 @@ ${data.usage}
 ## Credits
 ${data.credit}
 ## License
-This project was licenced under the ${data.stack} license. 
+This project was licensed under the ${data.stack} license. 
 ## How to Contribute
 ${data.contribute}
 ## Tests
